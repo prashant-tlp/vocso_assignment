@@ -14,8 +14,8 @@ export default function mail({user,token}){
     const mailOption = {
         from:process.env.emailuser,
         to:`${user?.email}`,
-        subject:'Login token',
-        text:`your sesstiontoken is ${token}`
+        subject:'Auth0 Authenication Service',
+        text:`Dear ${user.name} Your token is : \n${token}`
     }
     return new Promise((resolve,reject)=>{
         transporter.sendMail(mailOption,(error,info)=>{
