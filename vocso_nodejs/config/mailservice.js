@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 import dotenv from 'dotenv'
 dotenv.config();
 
-console.log("EMAIL USER:", process.env.emailuser);
+console.log("EMAIL USER:", process.env.emailUser);
 console.log("EMAIL PASS:", process.env.emailPass ? "******" : "NOT SET");
 
 export default function mail({user,token}){
@@ -10,7 +10,7 @@ export default function mail({user,token}){
     const transporter = nodemailer.createTransport({
         service:'gmail',
         auth:{
-            user:process.env.emailuser,
+            user:process.env.emailUser,
             pass:process.env .emailPass,
         }
     })
