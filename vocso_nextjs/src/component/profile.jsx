@@ -10,7 +10,7 @@ export default function UserProfile({idToken}) {
   const sendToken =async () =>{
     Cookies.set('sessionToken',idToken)
     const response = await apiReq({url:'auth/callback',method:'POST',data:{user:user}})
-    console.log("response",response)
+    // console.log("response",response)
   }
   useEffect(()=>{
     if (user) {
@@ -24,7 +24,7 @@ export default function UserProfile({idToken}) {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="p-6 bg-white shadow-lg rounded-xl text-center w-80">
+      <div className="p-6 w-1/3 bg-white shadow-lg rounded-xl text-center">
         {user ? (
           <>
             <img
