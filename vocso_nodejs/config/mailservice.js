@@ -2,6 +2,9 @@ import nodemailer from 'nodemailer';
 import dotenv from 'dotenv'
 dotenv.config();
 
+console.log("EMAIL USER:", process.env.emailuser);
+console.log("EMAIL PASS:", process.env.emailPass ? "******" : "NOT SET");
+
 export default function mail({user,token}){
     // console.log(user,token)
     const transporter = nodemailer.createTransport({
