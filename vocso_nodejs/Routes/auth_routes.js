@@ -12,5 +12,10 @@ const checkJwt = auth({
 
 const router = express.Router();
 
-router.post('/callback',verifyToken,adminAuthController)
+router.post('/callback',verifyToken,adminAuthController);
+router.post('/check',(req,res)=>{
+    res.send("api working")
+    res.end()
+})
+
 export default router
