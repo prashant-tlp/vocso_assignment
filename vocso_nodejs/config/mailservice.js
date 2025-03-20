@@ -20,7 +20,8 @@ export default function mail({user,token}){
     return new Promise((resolve,reject)=>{
         transporter.sendMail(mailOption,(error,info)=>{
             if(error){
-                reject('error sending mail')
+                console.log("mail error",error)
+                reject(error)
             }
             else{
                 resolve('mail sent')
