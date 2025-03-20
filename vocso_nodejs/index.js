@@ -10,7 +10,10 @@ dotenv.config()
 const port = process.env.port;
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  credentials: true
+}));
 app.use(express.json());
 
 const server = http.createServer(app);
