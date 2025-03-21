@@ -1,23 +1,31 @@
-"use client"; 
+"use client";
 
 import { apiReq } from "@/lib/api_service";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Cookies from "js-cookie";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export default function UserProfile({idToken}) {
+export default function UserProfile({ idToken }) {
   const { user, error, isLoading } = useUser();
-  const sendToken =async () =>{
-    Cookies.set('sessionToken',idToken)
-    const response = await apiReq({url:'auth/callback',method:'POST',data:{user:user}})
-    // console.log("response",response)
-  }
-  useEffect(()=>{
-    if (user) {
-        sendToken();
+  const [sessionToken, setSessionToken] = useState(null);
+  useEffect(() => {
+    if (user && idToken) {
+      Cookies.set("sessionToken", idToken);
+      setSessionToken(idToken);
+
+      apiReq({ url: "auth/callback", method: "POST", data: { user } })
+        .then((response) => console.log("API response:", response))
+        .catch((err) => console.error("API error:", err));
     }
-    
-  },[user,idToken])
+  }, [user, idToken]);
+
+  useEffect(() => {
+    return () => {
+      console.log("Component will unmount");
+      Cookies.remove("sessionToken");
+      setSessionToken(null);
+    };
+  }, []);
 
   if (isLoading) return <p className="text-center text-gray-600">Loading...</p>;
   if (error) return <p className="text-center text-red-500">Error: {error.message}</p>;
@@ -37,6 +45,10 @@ export default function UserProfile({idToken}) {
             <a
               href="/api/auth/logout"
               className="block mt-4 px-4 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition"
+              onClick={() => {
+                Cookies.remove("sessionToken");
+                setSessionToken(null);
+              }}
             >
               Logout
             </a>
