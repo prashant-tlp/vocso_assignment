@@ -20,13 +20,14 @@ How to configure Auth0 for the frontend :
 Steps to run the frontend locally (
     1. go to src/lib.api_service an comment the  live base url and use the localhost adress for baseUrl,
     2. run 'npm install' in terminal to installl necessary pacakges
-    3. run npm dev 
+    3. create a .env.local file in the root directory and then provide above mentioned auth0 configuration keys
+    4. run npm dev 
 ).
 
 # Backend Setup:
 # backend is live at https://vocso-assignment.onrender.com/ ( on render)
 Instructions for setting up the Node.js backend.
-How to configure Auth0 in the backend (
+How to configure Auth0 in .env the backend (
     mongostring = "your mongo-uri"  (# we are not storing data for now but if not provided it will show error of database not connnected)
     port = 3001
     AUTH0_CLIENT_ID=your-client-id-here
@@ -35,7 +36,11 @@ How to configure Auth0 in the backend (
     emailUser=your-email (# we are using nodemailer for with gmail service)
     emailPass=your pass (# two factor authentication password creted from google accound)
 ).
-Steps to run the backend locally (npm start or node server.js).
+Steps to run the backend locally (
+    1 run 'npm install' locally in your terminal
+    2. create a .env file if not present and provide the above configuration in .env
+    e start the server using 'npm start' in the terminal
+).
 Ensure that the /auth/callback endpoint is functioning as expected.
 Deploying the Frontend: Explain how to deploy the frontend on Vercel/Netlify.
 Deploying the Backend: Explain how to deploy the backend to Railway/Render/AWS Lightsail.
