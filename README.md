@@ -3,11 +3,22 @@
 
 # Description: Simple authentiication flow using auth0 for login and signup after login signup verification of idToken at backend and a mail to user containing that token.
 
-# Prerequisites: node with express, auth0 version 3, nextjs v15.2
+# give it a try 
+visit the fontend deployed on Vercel 
+# 👉 https://vocso-frontend.vercel.app/login
 
-# Frontend Setup:
+1.simply click login and auth0 verification page will open provide the necessary details or login/signup using google
+2. after successfull login a email will be sent to your email id
+3. if email not received please check the spam folder
 
-# fontend is live at https://vocso-frontend.vercel.app/login ( on Vercel)
+
+# Setup locally
+Prerequisites: node with express, auth0 version 3, nextjs v15.2
+
+# Frontend Setup: 
+
+fontend is live at https://vocso-frontend.vercel.app/login ( on Vercel)
+
 Instructions for setting up the Next.js frontend.
 How to configure Auth0 for the frontend :
 {
@@ -25,7 +36,9 @@ Steps to run the frontend locally (
 ).
 
 # Backend Setup:
-# backend is live at https://vocso-assignment.onrender.com/ ( on render)
+
+ backend is live at https://vocso-assignment.onrender.com/ ( on render)
+
 Instructions for setting up the Node.js backend.
 How to configure Auth0 in .env the backend (
     mongostring = "your mongo-uri"  (# we are not storing data for now but if not provided it will show error of database not connnected)
